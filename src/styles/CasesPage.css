@@ -1,0 +1,218 @@
+.cases {
+  padding: 2rem;
+}
+
+.cases-page {
+  min-height: 100vh;
+  padding: 100px 5% 50px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.cases-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.cases-header h1 {
+  font-size: 3.5rem;
+  font-family: var(--font-secondary);
+  margin-bottom: 15px;
+  background: linear-gradient(45deg, #fff 30%, var(--primary-color) 50%, #fff 70%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: shine 3s linear infinite;
+}
+
+.cases-header p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.cases-filters {
+  margin-bottom: 40px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+}
+
+.filter-group {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.filter-group select,
+.filter-group input {
+  padding: 12px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-size: 1rem;
+  min-width: 200px;
+  transition: all 0.3s ease;
+}
+
+.filter-group select:hover,
+.filter-group input:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.filter-group select:focus,
+.filter-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(220, 0, 0, 0.2);
+}
+
+.filter-group select option {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 20px 0;
+}
+
+.case-card {
+  position: relative;
+  background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.case-card:hover {
+  box-shadow: 0 8px 25px rgba(220, 0, 0, 0.2);
+}
+
+.case-card__image {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.case-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.case-card:hover .case-card__image img {
+  transform: scale(1.1);
+}
+
+.case-card__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  display: flex;
+  align-items: flex-start;
+  padding: 15px;
+}
+
+.case-status {
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.case-status.unsolved {
+  background-color: rgba(220, 0, 0, 0.2);
+  color: #ff4444;
+}
+
+.case-status.solved {
+  background-color: rgba(0, 220, 0, 0.2);
+  color: #44ff44;
+}
+
+.case-status.partially-solved {
+  background-color: rgba(220, 220, 0, 0.2);
+  color: #ffff44;
+}
+
+.case-card__content {
+  padding: 20px;
+}
+
+.case-card__content h3 {
+  font-family: var(--font-secondary);
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.case-card__metadata {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.case-card__content p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.8);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .cases-page {
+    padding: 80px 20px 30px;
+  }
+
+  .cases-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .cases-header p {
+    font-size: 1rem;
+  }
+
+  .filter-group select,
+  .filter-group input {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .cases-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
