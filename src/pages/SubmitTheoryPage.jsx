@@ -258,7 +258,7 @@ const SubmitTheoryPage = () => {
         className="submit-theory__container"
       >
         <div className="submit-theory__info">
-          <h1>Submit Your Theory</h1>
+          <h1 data-text="Submit Your Theory">Submit Your Theory</h1>
           <p className="tagline">Have a breakthrough? Share your insights.</p>
           <div className="progress-bar">
             <div 
@@ -312,7 +312,6 @@ const SubmitTheoryPage = () => {
         </form>
       </motion.div>
 
-      {/* Similar Theories Section */}
       {selectedCase && (
         <motion.div
           initial={{ opacity: 0, y: 20 }}

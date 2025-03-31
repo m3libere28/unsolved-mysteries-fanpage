@@ -49,16 +49,16 @@ const CasesPage = () => {
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
           Case Files
         </motion.h1>
         <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
-          Explore our collection of unsolved mysteries and cold cases
+          Explore decades of unsolved mysteries, from historic cold cases to modern enigmas. Each file tells a story waiting to be unraveled.
         </motion.p>
       </div>
 

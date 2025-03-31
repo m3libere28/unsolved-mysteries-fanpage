@@ -11,22 +11,22 @@ const UFOLoader = ({ onLoadComplete }) => {
   const [cowAbducted, setCowAbducted] = useState(false);
 
   useEffect(() => {
-    // Show cow when UFO is in position (3s for UFO animation)
-    const cowTimer = setTimeout(() => setCowVisible(true), 3000);
+    // Show cow when UFO is in position (5s for UFO animation)
+    const cowTimer = setTimeout(() => setCowVisible(true), 5000);
     
-    // Start abduction after cow appears
-    const abductionTimer = setTimeout(() => setIsAbducting(true), 4500);
+    // Start abduction after cow appears (2s delay)
+    const abductionTimer = setTimeout(() => setIsAbducting(true), 7000);
     
-    // Hide cow (abducted)
-    const cowAbductionTimer = setTimeout(() => setCowAbducted(true), 5500);
+    // Hide cow (abducted) (2s for abduction)
+    const cowAbductionTimer = setTimeout(() => setCowAbducted(true), 9000);
     
-    // Start exit animation
-    const exitTimer = setTimeout(() => setIsExiting(true), 5700);
+    // Start exit animation (0.5s delay)
+    const exitTimer = setTimeout(() => setIsExiting(true), 9500);
     
-    // Complete loading sequence
+    // Complete loading sequence (2s for exit)
     const loadTimer = setTimeout(() => {
       if (onLoadComplete) onLoadComplete();
-    }, 6500);
+    }, 11500);
 
     return () => {
       clearTimeout(cowTimer);
@@ -48,113 +48,61 @@ const UFOLoader = ({ onLoadComplete }) => {
         ))}
       </div>
 
+      <div className="ufo-container">
+        <motion.div
+          className="ufo"
+          initial={{ y: -200, x: -100 }}
+          animate={{ 
+            y: isExiting ? -200 : 0,
+            x: isExiting ? 100 : 0,
+            rotate: isExiting ? 15 : 0
+          }}
+          transition={{
+            y: { duration: 5, ease: "easeOut" },
+            x: { duration: 5, ease: "easeOut" },
+            rotate: { duration: 2, ease: "easeOut" }
+          }}
+        >
+          <img src={ufoImage} alt="UFO" />
+          <div className="beam" style={{ opacity: isAbducting ? 1 : 0 }} />
+        </motion.div>
+
+        <AnimatePresence>
+          {cowVisible && !cowAbducted && (
+            <motion.div
+              className="cow"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ 
+                opacity: 1, 
+                scale: 1,
+                y: isAbducting ? -100 : 0,
+                rotate: isAbducting ? 180 : 0
+              }}
+              exit={{ opacity: 0 }}
+              transition={{
+                opacity: { duration: 1 },
+                scale: { duration: 1 },
+                y: { duration: 2, ease: "easeOut" },
+                rotate: { duration: 2, ease: "linear" }
+              }}
+            >
+              <img src={cowImage} alt="Cow" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      <div className="ground" />
+      
       <motion.div 
         className="loading-text"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 2 }}
       >
         <h2>Close Encounter</h2>
         <p>Loading...</p>
       </motion.div>
-      
-      <motion.div 
-        className="ufo-container"
-        initial={{ scale: 0.5, y: -200, x: -100 }}
-        animate={isExiting ? {
-          scale: 0.1,
-          y: -500,
-          x: 500,
-          opacity: 0,
-          transition: {
-            duration: 0.8,
-            ease: "easeIn"
-          }
-        } : { 
-          scale: [0.5, 0.8, 1.2],
-          y: [-200, -100, 50],
-          x: [-100, 0, 0],
-          transition: { 
-            duration: 3,
-            times: [0, 0.6, 1],
-            ease: "easeInOut"
-          }
-        }}
-      >
-        <motion.img 
-          src={ufoImage}
-          alt="UFO"
-          className="ufo-image"
-          animate={{
-            rotate: [-1, 1, -1],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-      </motion.div>
-
-      <AnimatePresence>
-        {cowVisible && !cowAbducted && (
-          <motion.div
-            className="cow-container"
-            initial={{ y: 200, opacity: 0 }}
-            animate={isAbducting ? {
-              y: -70,
-              opacity: 1,
-              transition: { 
-                duration: 1,
-                ease: "easeInOut"
-              }
-            } : {
-              y: 0,
-              opacity: 1,
-              transition: { 
-                duration: 0.5,
-                ease: "backOut"
-              }
-            }}
-            exit={{
-              opacity: 0,
-              transition: { duration: 0.2 }
-            }}
-          >
-            <motion.img
-              src={cowImage}
-              alt="Cow"
-              className={`cow-image ${isAbducting ? 'cow-abducting' : ''}`}
-              animate={isAbducting ? {
-                scale: 0.6,
-                opacity: [1, 1, 0],
-                transition: { 
-                  duration: 1,
-                  times: [0, 0.8, 1],
-                  ease: "easeInOut"
-                }
-              } : {
-                scale: 1,
-              }}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <div className="treeline">
-        <div className="tree" />
-        <div className="tree" />
-        <div className="tree" />
-        <div className="tree" />
-        <div className="tree" />
-        <div className="tree" />
-        <div className="tree" />
-        <div className="tree" />
-        <div className="tree" />
-        <div className="tree" />
-        <div className="tree" />
-        <div className="tree" />
-      </div>
     </div>
   );
 };

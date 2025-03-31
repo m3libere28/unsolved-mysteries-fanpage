@@ -11,6 +11,32 @@
   justify-content: center;
 }
 
+.loading-text {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  z-index: 10;
+}
+
+.loading-text h2 {
+  font-family: 'Goldman', sans-serif;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.loading-text p {
+  font-family: 'Times New Roman', serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  color: #ccc;
+}
+
 .stars {
   position: fixed;
   width: 100%;
@@ -25,6 +51,7 @@
   background: #fff;
   border-radius: 50%;
   opacity: 0.4;
+  animation: twinkle 2s infinite;
 }
 
 .star:nth-child(3n) {
@@ -39,6 +66,11 @@
   opacity: 0.5;
 }
 
+@keyframes twinkle {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
 .ufo-container {
   position: relative;
   width: 600px;
@@ -50,26 +82,46 @@
   margin-bottom: 100px;
 }
 
-.ufo-image {
-  width: 450px;
-  height: auto;
-  filter: drop-shadow(0 0 40px rgba(0, 255, 128, 0.4));
-}
-
-.cow-container {
-  position: fixed;
-  bottom: 180px;
+.ufo {
+  position: relative;
+  width: 200px;
+  height: 120px;
   z-index: 3;
-  display: flex;
-  justify-content: center;
-  width: 180px;
 }
 
-.cow-image {
-  width: 180px;
-  height: auto;
-  z-index: 1;
-  filter: drop-shadow(0 0 15px rgba(0, 255, 128, 0.3));
+.ufo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 20px rgba(0, 255, 128, 0.4));
+}
+
+.beam {
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 150px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), transparent);
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+  transition: opacity 0.5s ease;
+  filter: blur(5px);
+}
+
+.cow {
+  position: absolute;
+  bottom: 50px;
+  width: 80px;
+  height: 60px;
+  z-index: 2;
+}
+
+.cow img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
 }
 
 .cow-abducting {
@@ -89,33 +141,14 @@
   }
 }
 
-.loading-text {
+.ground {
   position: absolute;
-  bottom: 120px;
-  text-align: center;
-  z-index: 4;
-  font-family: "Goldman", sans-serif;
-}
-
-.loading-text h2 {
-  font-size: 3rem;
-  margin-bottom: 15px;
-  background: linear-gradient(45deg, #ff3333, #ff0000);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  text-shadow: 
-    0 0 10px rgba(255, 0, 0, 0.5),
-    0 0 20px rgba(255, 0, 0, 0.3);
-}
-
-.loading-text p {
-  font-size: 1.4rem;
-  color: #ffffff;
-  letter-spacing: 0.15em;
-  opacity: 0.7;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, rgba(0, 100, 0, 0.2));
+  z-index: 1;
 }
 
 .treeline {
@@ -174,29 +207,39 @@
     margin-bottom: 80px;
   }
 
-  .ufo-image {
-    width: 300px;
+  .ufo {
+    width: 150px;
+    height: 90px;
   }
 
-  .cow-container {
-    bottom: 120px;
-    width: 120px;
+  .ufo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 
-  .cow-image {
-    width: 120px;
+  .cow {
+    bottom: 30px;
+    width: 60px;
+    height: 40px;
+  }
+
+  .cow img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 
   .loading-text {
-    bottom: 100px;
+    top: 45%;
   }
 
   .loading-text h2 {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
 
   .loading-text p {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .treeline {

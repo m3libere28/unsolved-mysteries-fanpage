@@ -41,6 +41,7 @@ const categories = [
   "Mystery Artifact",
   "Conspiracy",
   "Supernatural",
+  "UFO",
   "Cold Case",
   "Unexplained Phenomenon"
 ];
@@ -49,90 +50,90 @@ function generateTitle() {
   const adj = adjectives[Math.floor(Math.random() * adjectives.length)];
   const noun = nouns[Math.floor(Math.random() * nouns.length)];
   const location = locations[Math.floor(Math.random() * locations.length)];
-  return `The ${adj} ${location.city} ${noun}`;
+  return `The ${adj} ${noun} of ${location.city}`;
 }
 
 function generateYear(baseYear) {
-  // Generate a year within 30 years of the base case, but not the same year
-  const offset = Math.floor(Math.random() * 61) - 30; // -30 to +30 years
-  const newYear = baseYear + offset;
-  return Math.max(1800, Math.min(2024, newYear)); // Keep between 1800 and 2024
+  // Generate a year within 5 years of the base case
+  const offset = Math.floor(Math.random() * 11) - 5;
+  return baseYear + offset;
 }
 
 function generateDescription(baseCase, location, year) {
   const descriptions = [
-    `A perplexing series of events that shocked ${location.city} in ${year}`,
-    `One of ${location.region}'s most intriguing mysteries that remains controversial`,
-    `A case that challenged investigators and haunted ${location.city} for decades`,
-    `An unexplained incident that captured the world's attention in ${location.country}`,
-    `A baffling mystery that changed ${location.city} forever`
+    `A ${baseCase.category.toLowerCase()} case that shocked ${location.city} in ${year}.`,
+    `One of ${location.region}'s most intriguing mysteries from ${year}.`,
+    `An unsolved ${baseCase.category.toLowerCase()} that continues to baffle investigators since ${year}.`
   ];
   return descriptions[Math.floor(Math.random() * descriptions.length)];
 }
 
 function generateTheories(baseCase) {
-  const additionalTheories = [
+  const commonTheories = [
+    "Mistaken identity theory",
     "Government cover-up theory",
-    "Supernatural explanation theory",
-    "Mass hysteria theory",
-    "Parallel universe theory",
-    "Time traveler theory",
-    "Secret society involvement theory",
-    "Environmental factors theory",
-    "Psychological phenomenon theory"
+    "Criminal organization involvement",
+    "Natural phenomenon theory",
+    "Mass hysteria explanation",
+    "Supernatural occurrence theory",
+    "Coincidental events theory",
+    "Psychological factors theory"
   ];
 
-  // Keep one original theory and add two new ones
-  const originalTheory = baseCase.theories[Math.floor(Math.random() * baseCase.theories.length)];
-  const newTheories = additionalTheories
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 2);
-  
-  return [originalTheory, ...newTheories];
+  const theories = [...baseCase.theories];
+  while (theories.length < 3) {
+    const newTheory = commonTheories[Math.floor(Math.random() * commonTheories.length)];
+    if (!theories.includes(newTheory)) {
+      theories.push(newTheory);
+    }
+  }
+  return theories;
 }
 
 function generateKeyFacts(baseCase, location, year) {
-  const additionalFacts = [
-    `Multiple witnesses reported strange phenomena in ${location.city}`,
-    `Local authorities were baffled by the evidence`,
-    `International experts were called to investigate`,
-    `Similar incidents were reported in ${location.region}`,
-    `The case remains controversial to this day`,
-    `New evidence emerged decades later`,
-    `Multiple theories have been proposed and debunked`,
-    `The investigation spanned multiple countries`
+  const commonFacts = [
+    `Occurred in ${location.city}, ${location.country}`,
+    `Investigation began in ${year}`,
+    "Multiple witnesses reported similar details",
+    "Physical evidence was inconclusive",
+    "Official investigation remains open",
+    "Several leads were never fully explored",
+    "Key witnesses later changed their stories",
+    "New evidence emerged years later",
+    "Similar incidents reported in the area",
+    "Local authorities were baffled"
   ];
 
-  // Keep two original facts and add two new ones
-  const originalFacts = baseCase.keyFacts
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 2);
-  const newFacts = additionalFacts
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 2);
-  
-  return [...originalFacts, ...newFacts];
+  const facts = [...baseCase.keyFacts];
+  while (facts.length < 4) {
+    const newFact = commonFacts[Math.floor(Math.random() * commonFacts.length)];
+    if (!facts.includes(newFact)) {
+      facts.push(newFact);
+    }
+  }
+  return facts;
 }
 
 export function generateCase(id, baseCase) {
   const location = locations[Math.floor(Math.random() * locations.length)];
   const year = generateYear(baseCase.year);
-  const category = categories[Math.floor(Math.random() * categories.length)];
-  const status = ["Unsolved", "Partially Solved", "Solved"][Math.floor(Math.random() * 3)];
   const image = mysteryImages[Math.floor(Math.random() * mysteryImages.length)];
 
-  return {
+  const newCase = {
     id,
     title: generateTitle(),
-    category,
+    category: baseCase.category,
     year,
     location: `${location.city}, ${location.country}`,
-    status,
+    status: "Unsolved",
     shortDescription: generateDescription(baseCase, location, year),
-    fullDescription: `In ${year}, ${location.city} became the center of a mysterious ${category.toLowerCase()} that captivated the world. ${generateDescription(baseCase, location, year)}. Despite extensive investigations and numerous theories, the case ${status === "Solved" ? "was eventually solved" : "remains a mystery"} to this day.`,
+    fullDescription: baseCase.fullDescription,
     image,
     videoUrl: baseCase.videoUrl,
     keyFacts: generateKeyFacts(baseCase, location, year),
-    theories: generateTheories(baseCase)
+    theories: generateTheories(baseCase),
+    tags: baseCase.category === "UFO" ? ["ufo", ...baseCase.tags || []] : baseCase.tags
   };
+
+  return newCase;
 }

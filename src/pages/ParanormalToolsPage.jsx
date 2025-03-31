@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import HomeButton from '../components/HomeButton';
 import HauntedHouseBackground from '../components/HauntedHouseBackground';
+import ParanormalToolIcon from '../components/ParanormalToolIcon';
 import { toolImages, toolHistories } from '../data/paranormalImages';
 import { paranormalCases } from '../data/paranormalCases';
 import '../styles/ParanormalToolsPage.css';
@@ -17,6 +18,11 @@ const ParanormalToolsPage = () => {
     setActiveTab('cases');
   };
 
+  const handleCaseClick = (caseId) => {
+    setSelectedCase(caseId);
+    setShowInfo(true);
+  };
+
   const handleBackClick = () => {
     if (activeTab === 'cases' && selectedCase) {
       setSelectedCase(null);
@@ -29,7 +35,7 @@ const ParanormalToolsPage = () => {
   const renderToolsGrid = () => (
     <>
       <div className="tools-grid">
-        {Object.entries(toolHistories).map(([tool, data]) => (
+        {Object.entries(toolHistories).map(([tool, info]) => (
           <motion.div
             key={tool}
             className="tool-card"
@@ -37,13 +43,14 @@ const ParanormalToolsPage = () => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <img
-              src={toolImages[tool].icon}
-              alt={data.title}
-              className="tool-icon"
-            />
-            <h2>{data.title}</h2>
-            <p className="tool-description">{data.history.split('.')[0]}.</p>
+            <ParanormalToolIcon type={tool} />
+            <h2 className="tool-name">{info.title}</h2>
+            <p className="tool-description">{info.history.split('.')[0]}.</p>
+            <div className="tool-features">
+              {info.features.slice(0, 3).map((feature, index) => (
+                <span key={index} className="feature-tag">{feature}</span>
+              ))}
+            </div>
             <button className="learn-more-btn">View Related Cases →</button>
           </motion.div>
         ))}
@@ -101,9 +108,9 @@ const ParanormalToolsPage = () => {
   );
 
   const renderCasesList = () => {
-    const filteredCases = selectedTool
-      ? paranormalCases.filter(c => c.toolsUsed[selectedTool])
-      : [];
+    const filteredCases = paranormalCases.filter(c => 
+      c.toolsUsed && c.toolsUsed[selectedTool]
+    );
 
     return (
       <div className="cases-container">

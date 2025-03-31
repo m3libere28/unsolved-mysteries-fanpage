@@ -1,35 +1,35 @@
 // Images for paranormal tools and locations
 export const toolImages = {
   emf: {
-    icon: "https://images.unsplash.com/photo-1584968124544-d10ce10dd21f?w=300&h=300&fit=crop",
+    type: 'emf',
     readings: [
-      "https://images.unsplash.com/photo-1584968124544-d10ce10dd21f?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1584968124544-d10ce10dd21f?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1584968124544-d10ce10dd21f?w=800&h=600&fit=crop"
+      "/assets/paranormal/emf-reading-1.svg",
+      "/assets/paranormal/emf-reading-2.svg",
+      "/assets/paranormal/emf-reading-3.svg"
     ]
   },
   temperature: {
-    icon: "https://images.unsplash.com/photo-1584968124544-d10ce10dd21f?w=300&h=300&fit=crop",
+    type: 'temperature',
     readings: [
-      "https://images.unsplash.com/photo-1584968124544-d10ce10dd21f?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1584968124544-d10ce10dd21f?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1584968124544-d10ce10dd21f?w=800&h=600&fit=crop"
+      "/assets/paranormal/temp-reading-1.svg",
+      "/assets/paranormal/temp-reading-2.svg",
+      "/assets/paranormal/temp-reading-3.svg"
     ]
   },
   evp: {
-    icon: "https://images.unsplash.com/photo-1584968124544-d10ce10dd21f?w=300&h=300&fit=crop",
+    type: 'evp',
     recordings: [
-      "https://images.unsplash.com/photo-1584968124544-d10ce10dd21f?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1584968124544-d10ce10dd21f?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1584968124544-d10ce10dd21f?w=800&h=600&fit=crop"
+      "/assets/paranormal/evp-wave-1.svg",
+      "/assets/paranormal/evp-wave-2.svg",
+      "/assets/paranormal/evp-wave-3.svg"
     ]
   },
   spiritBox: {
-    icon: "https://images.unsplash.com/photo-1584968124544-d10ce10dd21f?w=300&h=300&fit=crop",
+    type: 'spiritBox',
     static: [
-      "https://images.unsplash.com/photo-1584968124544-d10ce10dd21f?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1584968124544-d10ce10dd21f?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1584968124544-d10ce10dd21f?w=800&h=600&fit=crop"
+      "/assets/paranormal/static-1.svg",
+      "/assets/paranormal/static-2.svg",
+      "/assets/paranormal/static-3.svg"
     ]
   }
 };
@@ -48,39 +48,39 @@ export const toolHistories = {
     ]
   },
   temperature: {
-    title: "Temperature Sensor",
-    history: "Temperature sensors became essential tools in paranormal research after investigators noticed dramatic temperature drops in allegedly haunted locations. These 'cold spots,' often dropping 20-30 degrees below ambient temperature, have been documented in countless investigations since the early 1900s.",
+    title: "Thermal Sensor",
+    history: "Thermal imaging in ghost hunting emerged from military and scientific applications. These devices detect cold spots and temperature anomalies, which paranormal investigators believe may indicate spiritual presence. Modern thermal sensors can create detailed heat maps and track temperature changes over time.",
     features: [
-      "Precision temperature monitoring",
+      "Infrared temperature sensing",
       "Cold spot detection",
-      "Thermal mapping",
-      "Rate of change alerts",
-      "Environmental baseline tracking",
-      "Multi-zone comparison"
+      "Heat mapping",
+      "Temperature trending",
+      "Environmental baseline",
+      "Digital recording"
     ]
   },
   evp: {
-    title: "EVP Recorder",
-    history: "Electronic Voice Phenomena (EVP) recording began in the 1950s when Friedrich Jürgenson discovered unexplained voices in his bird song recordings. This discovery led to the development of specialized recording equipment designed to capture voices and sounds beyond normal human hearing range.",
+    title: "Spirit Recorder",
+    history: "Electronic Voice Phenomena (EVP) recording began in the 1950s when Friedrich Jürgenson discovered unexplained voices in his nature recordings. This led to dedicated EVP research and the development of specialized recording equipment designed to capture sounds beyond normal human hearing.",
     features: [
-      "High-sensitivity recording",
-      "Noise reduction filtering",
-      "Frequency isolation",
-      "Voice pattern recognition",
-      "Real-time monitoring",
-      "Multi-channel recording"
+      "High-sensitivity microphone",
+      "White noise filtering",
+      "Frequency analysis",
+      "Voice isolation",
+      "Pattern recognition",
+      "Spectral display"
     ]
   },
   spiritBox: {
     title: "Spirit Box",
-    history: "The Spirit Box, developed in the early 2000s, represents a modern approach to paranormal communication. By rapidly scanning radio frequencies, it creates white noise that theoretically allows spirits to manipulate the audio fragments into coherent responses. This controversial tool has become a staple in contemporary ghost hunting.",
+    history: "The Spirit Box, developed in the early 2000s, rapidly scans radio frequencies to create white noise. Paranormal investigators theorize that spirits can manipulate this energy to form words and communicate. Modern versions include advanced filtering and pattern recognition.",
     features: [
       "Rapid frequency scanning",
-      "Voice pattern detection",
-      "Frequency isolation",
-      "Response recording",
-      "Real-time analysis",
-      "Environmental shielding"
+      "Noise reduction",
+      "Voice enhancement",
+      "Frequency lock",
+      "Response tracking",
+      "Audio recording"
     ]
   }
 };

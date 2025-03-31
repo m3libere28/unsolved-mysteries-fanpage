@@ -1,13 +1,23 @@
 import { baseCases } from './baseCases';
+import { netflixCases } from './netflixCases';
 import { generateCase } from './caseGenerator';
 
-// Generate 27 additional cases based on the base cases
-const additionalCases = Array.from({ length: 27 }, (_, index) => {
+// Generate 22 additional cases based on the base cases (reduced from 27 to make room for Netflix cases)
+const additionalCases = Array.from({ length: 22 }, (_, index) => {
   const baseCase = baseCases[index % baseCases.length];
-  return generateCase(index + 4, baseCase);
+  const newCase = generateCase(index + baseCases.length + netflixCases.length + 1, baseCase);
+  console.log('Generated case:', newCase);
+  return newCase;
 });
 
-export const cases = [...baseCases, ...additionalCases];
+console.log('Base cases:', baseCases);
+console.log('Netflix cases:', netflixCases);
+console.log('Additional cases:', additionalCases);
+
+export const cases = [...baseCases, ...netflixCases, ...additionalCases];
+
+console.log('Total cases:', cases.length);
+console.log('UFO cases:', cases.filter(c => c.category === 'UFO' || (c.tags && c.tags.includes('ufo'))).length);
 
 export const categories = [
   "Murder",
@@ -16,6 +26,7 @@ export const categories = [
   "Mystery Artifact",
   "Conspiracy",
   "Supernatural",
+  "UFO",
   "Cold Case",
   "Unexplained Phenomenon"
 ];

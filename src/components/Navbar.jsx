@@ -21,10 +21,14 @@ const Navbar = () => {
     setIsOpen(false);
   }, [location]);
 
+  const isActive = (path) => {
+    return location.pathname === path;
+  };
+
   return (
     <nav className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}>
       <div className="navbar__container">
-        <Link to="/" className="navbar__logo">
+        <Link to="/home" className="navbar__logo">
           <span className="navbar__logo-text">Unsolved Mysteries</span>
           <span className="navbar__logo-highlight">Fanpage</span>
         </Link>
@@ -41,26 +45,38 @@ const Navbar = () => {
 
         <div className={`navbar__menu ${isOpen ? 'active' : ''}`}>
           <Link 
+            to="/home" 
+            className={`navbar__link ${isActive('/home') ? 'active' : ''}`}
+          >
+            Home
+          </Link>
+          <Link 
             to="/cases" 
-            className={`navbar__link ${location.pathname === '/cases' ? 'active' : ''}`}
+            className={`navbar__link ${isActive('/cases') ? 'active' : ''}`}
           >
             Case Files
           </Link>
           <Link 
             to="/timeline" 
-            className={`navbar__link ${location.pathname === '/timeline' ? 'active' : ''}`}
+            className={`navbar__link ${isActive('/timeline') ? 'active' : ''}`}
           >
             Timeline
           </Link>
           <Link 
+            to="/ufo-encounters" 
+            className={`navbar__link ${isActive('/ufo-encounters') ? 'active' : ''}`}
+          >
+            UFO Encounters
+          </Link>
+          <Link 
             to="/paranormal-tools" 
-            className={`navbar__link ${location.pathname === '/paranormal-tools' ? 'active' : ''}`}
+            className={`navbar__link ${isActive('/paranormal-tools') ? 'active' : ''}`}
           >
             Paranormal Tools
           </Link>
           <Link 
             to="/submit-theory" 
-            className={`navbar__link navbar__link--highlight ${location.pathname === '/submit-theory' ? 'active' : ''}`}
+            className={`navbar__link navbar__link--highlight ${isActive('/submit-theory') ? 'active' : ''}`}
           >
             Submit Theory
           </Link>

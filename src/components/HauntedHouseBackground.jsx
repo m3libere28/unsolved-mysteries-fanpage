@@ -32,10 +32,10 @@ const HauntedHouseBackground = () => {
     };
 
     const lightningInterval = setInterval(() => {
-      if (Math.random() < 0.3) {
+      if (Math.random() < 0.15) { 
         createLightningSequence();
       }
-    }, 2000);
+    }, 4000); 
 
     return () => clearInterval(lightningInterval);
   }, []);
