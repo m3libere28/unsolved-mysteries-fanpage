@@ -53,10 +53,14 @@ const Navbar = () => {
             Timeline
           </Link>
           <Link 
+            to="/paranormal-tools" 
+            className={`navbar__link ${location.pathname === '/paranormal-tools' ? 'active' : ''}`}
+          >
+            Paranormal Tools
+          </Link>
+          <Link 
             to="/submit-theory" 
-            className={`navbar__link navbar__link--highlight ${
-              location.pathname === '/submit-theory' ? 'active' : ''
-            }`}
+            className={`navbar__link navbar__link--highlight ${location.pathname === '/submit-theory' ? 'active' : ''}`}
           >
             Submit Theory
           </Link>

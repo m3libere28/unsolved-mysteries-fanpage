@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@400;500;600;700&display=swap');
 
 :root {
   /* Colors */
@@ -8,13 +8,30 @@
   --background-color: #000000;
   
   /* Typography */
-  --font-primary: 'Times New Roman', Times, serif;
-  --font-secondary: 'Goldman', 'Bank Gothic', 'Arial Narrow', sans-serif;
+  --font-display: "Bank Gothic", "Saira Semi Condensed", sans-serif;
+  --font-body: "Times New Roman", Times, serif;
+  --letter-spacing-wide: 0.15em;
+  --letter-spacing-medium: 0.1em;
+  --letter-spacing-normal: 0.02em;
   --accent-color: #333333;
-  --font-secondary: 'Oswald', sans-serif;
-  --font-primary: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+}
+
+@font-face {
+  font-family: 'Bank Gothic';
+  src: url('/fonts/BankGothicMedium.woff2') format('woff2'),
+       url('/fonts/BankGothicMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bank Gothic';
+  src: url('/fonts/BankGothicBold.woff2') format('woff2'),
+       url('/fonts/BankGothicBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -42,7 +59,7 @@
 }
 
 body {
-  font-family: var(--font-primary);
+  font-family: var(--font-body);
   background-color: var(--background-color);
   color: var(--text-color);
   line-height: 1.6;
@@ -51,35 +68,35 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-secondary);
+  font-family: var(--font-display);
   font-weight: bold;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--letter-spacing-medium);
   text-transform: uppercase;
 }
 
 /* Logo style (for main titles) */
 .logo-text {
-  font-family: var(--font-primary);
+  font-family: var(--font-body);
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: var(--letter-spacing-wide);
   text-shadow: 2px 2px 4px rgba(220, 0, 0, 0.3);
 }
 
 /* Adjust specific heading sizes */
 h1 { 
   font-size: clamp(2.5rem, 5vw, 4rem);
-  letter-spacing: 0.12em;
+  letter-spacing: var(--letter-spacing-wide);
 }
 
 h2 { 
   font-size: clamp(2rem, 4vw, 3rem);
-  letter-spacing: 0.1em;
+  letter-spacing: var(--letter-spacing-medium);
 }
 
 h3 { 
   font-size: clamp(1.5rem, 3vw, 2rem);
-  letter-spacing: 0.08em;
+  letter-spacing: var(--letter-spacing-normal);
 }
 
 /* Links */
@@ -90,14 +107,16 @@ a {
 }
 
 a:hover {
-  color: var(--primary-color);
+  color: var(--accent-color);
 }
 
 /* Buttons */
 button {
-  font-family: var(--font-secondary);
+  font-family: var(--font-display);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--letter-spacing-normal);
+  border: none;
+  cursor: pointer;
 }
 
 /* Selection */
