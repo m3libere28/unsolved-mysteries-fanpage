@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { cases } from '../data/cases';
+import CaseModal from '../components/CaseModal';
 import './FeaturedStoriesSection.css';
 
 const FeaturedStoriesSection = () => {
-  const [activeCase, setActiveCase] = useState(null);
+  const [selectedCase, setSelectedCase] = useState(null);
   
   // Select a few interesting cases for the featured section
   const featuredCases = cases
@@ -11,7 +12,7 @@ const FeaturedStoriesSection = () => {
     .slice(0, 3);
 
   const handleCaseClick = (caseItem) => {
-    setActiveCase(activeCase?.id === caseItem.id ? null : caseItem);
+    setSelectedCase(caseItem);
   };
 
   return (
@@ -26,7 +27,7 @@ const FeaturedStoriesSection = () => {
         {featuredCases.map((caseItem) => (
           <div
             key={caseItem.id}
-            className={`featured__card ${activeCase?.id === caseItem.id ? 'featured__card--active' : ''}`}
+            className="featured__card"
             onClick={() => handleCaseClick(caseItem)}
           >
             <div 
@@ -44,43 +45,17 @@ const FeaturedStoriesSection = () => {
                 <span className="featured__location">{caseItem.location}</span>
                 <span className="featured__status">{caseItem.status}</span>
               </div>
-
               <p className="featured__summary">{caseItem.summary}</p>
-
-              {activeCase?.id === caseItem.id && (
-                <div className="featured__details">
-                  <h4>Key Facts</h4>
-                  <ul className="featured__facts">
-                    {caseItem.keyFacts.map((fact, index) => (
-                      <li key={index}>{fact}</li>
-                    ))}
-                  </ul>
-
-                  <h4>Theories</h4>
-                  <ul className="featured__theories">
-                    {caseItem.theories.map((theory, index) => (
-                      <li key={index}>{theory}</li>
-                    ))}
-                  </ul>
-
-                  {caseItem.videoUrl && (
-                    <div className="featured__video">
-                      <h4>Case Video</h4>
-                      <iframe
-                        src={caseItem.videoUrl}
-                        title={`Video for ${caseItem.title}`}
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      ></iframe>
-                    </div>
-                  )}
-                </div>
-              )}
+              <button className="featured__read-more">Read Full Story</button>
             </div>
           </div>
         ))}
       </div>
+
+      <CaseModal 
+        caseData={selectedCase} 
+        onClose={() => setSelectedCase(null)} 
+      />
     </section>
   );
 };

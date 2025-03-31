@@ -15,7 +15,7 @@ const CaseModal = ({ caseData, onClose }) => {
             <div className="modal-metadata">
               <span className="modal-year">{caseData.year}</span>
               <span className="modal-location">{caseData.location}</span>
-              <span className={`modal-status ${caseData.status.toLowerCase().replace(' ', '-')}`}>
+              <span className={`modal-status ${caseData.status.toLowerCase().replace(/\s+/g, '-')}`}>
                 {caseData.status}
               </span>
             </div>
@@ -23,6 +23,7 @@ const CaseModal = ({ caseData, onClose }) => {
         </div>
 
         <div className="modal-media">
+          <img src={caseData.imageUrl} alt={caseData.title} className="modal-image" />
           {caseData.videoUrl && (
             <div className="modal-video">
               <iframe
@@ -34,7 +35,6 @@ const CaseModal = ({ caseData, onClose }) => {
               ></iframe>
             </div>
           )}
-          <img src={caseData.imageUrl} alt={caseData.title} className="modal-image" />
         </div>
 
         <div className="modal-body">
@@ -43,7 +43,7 @@ const CaseModal = ({ caseData, onClose }) => {
             <p>{caseData.details}</p>
           </div>
 
-          {caseData.keyFacts && (
+          {caseData.keyFacts && caseData.keyFacts.length > 0 && (
             <div className="modal-section">
               <h3>Key Facts</h3>
               <ul className="modal-facts">
@@ -54,9 +54,9 @@ const CaseModal = ({ caseData, onClose }) => {
             </div>
           )}
 
-          {caseData.theories && (
+          {caseData.theories && caseData.theories.length > 0 && (
             <div className="modal-section">
-              <h3>Leading Theories</h3>
+              <h3>Theories</h3>
               <ul className="modal-theories">
                 {caseData.theories.map((theory, index) => (
                   <li key={index}>
@@ -67,12 +67,6 @@ const CaseModal = ({ caseData, onClose }) => {
               </ul>
             </div>
           )}
-
-          <div className="modal-tags">
-            {caseData.tags.map((tag, index) => (
-              <span key={index} className="modal-tag">{tag}</span>
-            ))}
-          </div>
         </div>
       </div>
     </div>

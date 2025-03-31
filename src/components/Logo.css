@@ -4,6 +4,7 @@
   align-items: center;
   font-family: 'Courier New', monospace;
   cursor: pointer;
+  padding: 0.5rem;
 }
 
 .logo__text {
@@ -36,14 +37,19 @@
 
 .logo__question-mark {
   font-size: 3rem;
+  font-family: "Times New Roman", serif;
+  font-weight: bold;
+  font-style: italic;
   color: #ff0000;
   margin-left: 1rem;
-  animation: pulse 2s infinite;
+  position: relative;
+  transform-origin: center bottom;
+  animation: questionPulse 2s infinite;
   text-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
 }
 
 .logo:hover .logo__question-mark {
-  animation: shake 0.5s infinite;
+  animation: questionShake 0.5s infinite;
 }
 
 .logo:hover .logo__fanpage {
@@ -63,30 +69,30 @@
   pointer-events: none;
 }
 
-@keyframes pulse {
+@keyframes questionPulse {
   0% {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) rotate(0deg);
   }
   50% {
     opacity: 0.5;
-    transform: scale(0.95);
+    transform: scale(0.95) rotate(0deg);
   }
   100% {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) rotate(0deg);
   }
 }
 
-@keyframes shake {
+@keyframes questionShake {
   0%, 100% {
-    transform: translateX(0);
+    transform: rotate(0deg);
   }
   25% {
-    transform: translateX(-2px) rotate(-5deg);
+    transform: rotate(-10deg);
   }
   75% {
-    transform: translateX(2px) rotate(5deg);
+    transform: rotate(10deg);
   }
 }
 
@@ -105,11 +111,11 @@
   }
   60% {
     opacity: 0.2;
-    transform: translate(-5px);
+    transform: translate(-5px, 5px);
   }
   80% {
     opacity: 0;
-    transform: translate(5px);
+    transform: translate(5px, -5px);
   }
   100% {
     opacity: 0;

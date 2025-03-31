@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import HeroSection from './sections/HeroSection';
-import CaseShowcaseSection from './sections/CaseShowcaseSection';
-import StatisticsSection from './sections/StatisticsSection';
-import TimelineSection from './sections/TimelineSection';
-import EvidenceBoardSection from './sections/EvidenceBoardSection';
-import FeaturedStoriesSection from './sections/FeaturedStoriesSection';
+import React from 'react';
 import Navbar from './components/Navbar';
-import Loader from './components/Loader';
+import HeroSection from './sections/HeroSection';
+import FeaturedStoriesSection from './sections/FeaturedStoriesSection';
+import CaseMap from './components/CaseMap';
+import EpisodesGrid from './components/EpisodesGrid';
+import Footer from './components/Footer';
+import { cases } from './data/cases';
 import './App.css';
 
 function App() {
@@ -28,11 +27,18 @@ function App() {
     <div className="app">
       <Navbar />
       <HeroSection />
-      <CaseShowcaseSection />
-      <StatisticsSection />
-      <TimelineSection />
-      <EvidenceBoardSection />
-      <FeaturedStoriesSection />
+      <main>
+        <section id="featured">
+          <FeaturedStoriesSection cases={cases} />
+        </section>
+        <section id="map">
+          <CaseMap cases={cases} />
+        </section>
+        <section id="episodes">
+          <EpisodesGrid />
+        </section>
+      </main>
+      <Footer />
     </div>
   );
 }
