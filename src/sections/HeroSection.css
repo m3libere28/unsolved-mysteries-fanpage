@@ -1,26 +1,173 @@
 /* src/sections/HeroSection.css */
 .hero-section {
-  /* Override min-height for potentially taller hero */
-   min-height: 100vh;
-   display: flex;
-   justify-content: center; /* Center content vertically */
-   /* Consider a dark overlay pseudo-element */
-   /* background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('/images/hero-background.jpg') no-repeat center center/cover; */
-   /* Ensure background images are placed here or sectionStyles */
-   padding-top: 8rem; /* Adjust padding if needed */
-   color: #fff; /* Ensure high contrast text */
-   text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: url('../assets/hero-detective.jpg') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  overflow: hidden;
 }
 
-.hero-content h1 {
-  font-size: 4rem; /* Larger title */
-  margin-bottom: 1rem;
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.hero-section h1 {
+  font-family: 'Courier New', monospace;
+  font-size: 4rem;
   font-weight: bold;
-   border-bottom: none; /* Remove default underline */
-   display: block;
+  letter-spacing: 4px;
+  margin: 0;
+  text-shadow: 0 0 20px rgba(255, 68, 68, 0.3);
 }
 
-.hero-content p {
+.red-line {
+  width: 100px;
+  height: 3px;
+  background-color: #ff4444;
+  margin: 2rem auto;
+  box-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+}
+
+.tagline {
   font-size: 1.5rem;
-  max-width: 600px; /* Limit width of subtitle */
+  font-weight: 300;
+  margin: 1rem 0 2rem;
+  opacity: 0.9;
+  letter-spacing: 2px;
+}
+
+.case-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1.5rem;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 68, 68, 0.3);
+  border-radius: 4px;
+}
+
+.status-label {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  opacity: 0.8;
+}
+
+.status-value {
+  font-family: 'Courier New', monospace;
+  color: #ff4444;
+  font-weight: bold;
+  letter-spacing: 2px;
+  animation: pulse 2s infinite;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  z-index: 2;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-indicator:hover {
+  opacity: 1;
+}
+
+.scroll-indicator span {
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.scroll-arrow {
+  width: 20px;
+  height: 20px;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  transform: rotate(45deg);
+  animation: bounce 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    text-shadow: 0 0 5px rgba(255, 68, 68, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 68, 68, 0.8);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(255, 68, 68, 0.5);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) rotate(45deg);
+  }
+  40% {
+    transform: translateY(-10px) rotate(45deg);
+  }
+  60% {
+    transform: translateY(-5px) rotate(45deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .tagline {
+    font-size: 1.2rem;
+  }
+
+  .case-status {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* TV Static Effect */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 1;
 }
