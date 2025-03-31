@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './HeroSection.css';
-import detectiveImg from '../assets/hero-detective.jpg';
+import detectiveImg from '../images/hero-detective.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -46,7 +46,12 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="hero-section" id="hero">
+    <section 
+      ref={sectionRef} 
+      className="hero-section" 
+      id="hero"
+      style={{ backgroundImage: `url(${detectiveImg})` }}
+    >
       <div className="overlay"></div>
       <div ref={textRef} className="hero-content">
         <h1>UNSOLVED MYSTERIES</h1>
