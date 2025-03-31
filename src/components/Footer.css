@@ -1,0 +1,11 @@
+/* src/components/Footer.css */
+.footer {
+  background-color: #111;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid #444;
+  text-align: center;
+  color: #aaa;
+  font-size: 0.9rem;
+  position: relative; /* Needed to stack correctly */
+  z-index: 10; /* Above parallax backgrounds */
+}

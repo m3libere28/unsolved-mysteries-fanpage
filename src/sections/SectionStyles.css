@@ -1,0 +1,33 @@
+/* src/sections/SectionStyles.css */
+.section {
+  min-height: 100vh; /* Aim for full viewport height */
+  padding: 8rem 2rem 4rem; /* Generous padding (more top padding due to fixed navbar) */
+  border-bottom: 1px solid #333; /* Optional separator */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; Centers vertically IF min-height is exact */
+  align-items: center;
+  text-align: center;
+  position: relative; /* Sections need to be relative */
+  z-index: 1; /* To ensure stacking above parallax layers */
+  /* Let App.css control the base background, override here if needed */
+  /* background-color: rgba(26, 26, 26, 0.8); */
+  opacity: 0; /* Start hidden for GSAP fade-in */
+  visibility: hidden; /* Use autoAlpha in GSAP for better performance */
+}
+
+/* Give sections distinct backgrounds if desired */
+#hero { background-color: transparent; } /* Let parallax show fully */
+#cases { background-color: #1a1a1a; } /* Example solid bg */
+#map { background-color: #151519; } /* Example solid bg */
+#archives { background-color: #1f1f1f; } /* Example solid bg */
+
+
+/* Target section headings etc */
+.section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #555;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}

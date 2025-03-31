@@ -1,0 +1,72 @@
+/* src/pages/CaseFilesPage.css */
+
+.case-files-container {
+  /* Styles for the overall container if needed */
+}
+
+.error-message {
+  color: #ff6b6b; /* Reddish color for errors */
+  font-weight: bold;
+}
+
+.case-list {
+  display: grid; /* Use grid for layout */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+  gap: 1.5rem; /* Space between cards */
+  margin-top: 1.5rem;
+}
+
+.case-card {
+  background-color: #2a2a2a; /* Slightly lighter dark background for cards */
+  border: 1px solid #444;
+  padding: 1.5rem;
+  border-radius: 5px; /* Slightly rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.case-card:hover {
+  transform: translateY(-5px); /* Lift card slightly on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.case-card h2 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+  color: #e0e0e0; /* Lighter heading color */
+}
+
+.case-card p {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: #cccccc; /* Slightly dimmer text for details */
+}
+
+.case-card p:last-child {
+  margin-bottom: 0;
+}
+
+.case-category,
+.case-status,
+.case-date {
+  font-style: italic;
+  font-size: 0.85rem;
+  color: #aaaaaa;
+}
+
+.details-link { /* Style the link if you add it later */
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #4a90e2;
+  color: white;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.details-link:hover {
+  background-color: #357abd;
+  text-decoration: none;
+  color: white;
+}

@@ -1,0 +1,26 @@
+/* src/sections/HeroSection.css */
+.hero-section {
+  /* Override min-height for potentially taller hero */
+   min-height: 100vh;
+   display: flex;
+   justify-content: center; /* Center content vertically */
+   /* Consider a dark overlay pseudo-element */
+   /* background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('/images/hero-background.jpg') no-repeat center center/cover; */
+   /* Ensure background images are placed here or sectionStyles */
+   padding-top: 8rem; /* Adjust padding if needed */
+   color: #fff; /* Ensure high contrast text */
+   text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.hero-content h1 {
+  font-size: 4rem; /* Larger title */
+  margin-bottom: 1rem;
+  font-weight: bold;
+   border-bottom: none; /* Remove default underline */
+   display: block;
+}
+
+.hero-content p {
+  font-size: 1.5rem;
+  max-width: 600px; /* Limit width of subtitle */
+}

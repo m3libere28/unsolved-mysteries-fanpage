@@ -1,0 +1,10 @@
+# .gitignore contents...
+node_modules
+dist
+.env
+.env.*
+*.local
+
+# Firebase config - DO NOT COMMIT!
+firebaseConfig.js
+src/firebaseConfig.js # Add this line just to be sure

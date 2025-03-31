@@ -1,0 +1,12 @@
+/* src/sections/ArchivesSection.css */
+.archives-section {
+  /* Maybe a slightly different background or texture */
+  background-color: #1d1d1d;
+}
+
+.archive-content {
+  margin-top: 2rem;
+  /* Add styling for elements within the archives */
+  color: #ccc;
+}
+/* Add CSS scanline effects or CRT filters here if desired */
