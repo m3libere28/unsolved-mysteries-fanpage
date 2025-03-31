@@ -4,6 +4,22 @@
   background: #000;
   color: #fff;
   padding-top: 60px;
+  position: relative;
+}
+
+.ufo-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/assets/UFO.png') no-repeat center center fixed;
+  background-size: cover;
+  opacity: 0.15;
+  filter: blur(2px);
+  z-index: 0;
+  pointer-events: none;
 }
 
 @keyframes titlePulsate {
@@ -15,7 +31,7 @@
 .ufo-header {
   text-align: center;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.9);
   border-bottom: 1px solid rgba(0, 255, 0, 0.2);
   position: fixed;
   top: 60px;
@@ -46,11 +62,13 @@
   display: flex;
   height: calc(100vh - 190px);
   margin-top: 190px;
+  position: relative;
+  z-index: 1;
 }
 
 .ufo-filters {
   width: 280px;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.9);
   border-right: 1px solid rgba(0, 255, 0, 0.2);
   padding: 20px;
   display: flex;
@@ -89,20 +107,22 @@
   flex: 1;
   padding: 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 25px;
   overflow-y: auto;
 }
 
 .ufo-card {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.85);
   border: 1px solid rgba(0, 255, 0, 0.2);
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
-  height: 280px;
+  height: 350px;
   display: flex;
   flex-direction: column;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .ufo-card:hover {
@@ -110,7 +130,7 @@
 }
 
 .ufo-card__image {
-  height: 140px;
+  height: 200px;
   overflow: hidden;
 }
 
@@ -121,7 +141,7 @@
 }
 
 .ufo-card__content {
-  padding: 15px;
+  padding: 20px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -129,11 +149,11 @@
 
 .ufo-card__content h3 {
   font-family: 'Goldman', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin: 0 0 10px;
+  margin: 0 0 12px;
 }
 
 .ufo-card__meta {
@@ -286,7 +306,29 @@
   line-height: 1.5;
 }
 
+@media (max-width: 1800px) {
+  .ufo-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1400px) {
+  .ufo-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1100px) {
+  .ufo-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
+  .ufo-cards {
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
   .ufo-content {
     flex-direction: column;
     height: auto;
@@ -312,11 +354,6 @@
 
   .ufo-header p {
     font-size: 16px;
-  }
-
-  .ufo-cards {
-    height: auto;
-    padding: 15px;
   }
 
   .ufo-modal__content {
