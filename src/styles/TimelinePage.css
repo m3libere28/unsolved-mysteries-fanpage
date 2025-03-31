@@ -4,9 +4,10 @@
 
 .timeline-page {
   min-height: 100vh;
-  padding: 80px 0;
-  background-color: var(--background-color);
+  padding: 100px 5% 50px;
   color: var(--text-color);
+  position: relative;
+  z-index: 2; /* Ensure content is above background */
 }
 
 .timeline-header {
@@ -58,6 +59,15 @@
 .timeline-filters button.active {
   background: var(--primary-color);
   border-color: var(--primary-color);
+}
+
+.timeline-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  overflow-x: hidden;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .timeline-container {
