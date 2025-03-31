@@ -12,6 +12,7 @@ const HeroSection = () => {
       
       <div className="hero__content">
         <h1>UNSOLVED MYSTERIES</h1>
+        <div className="hero__subtitle">FANPAGE</div>
         <div className="hero__line"></div>
         <p>Every case has a story. Every story needs to be told.</p>
         <div className="hero__status">
