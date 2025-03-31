@@ -7,7 +7,7 @@
   padding: 100px 5% 50px;
   color: var(--text-color);
   position: relative;
-  z-index: 2; /* Ensure content is above background */
+  z-index: 2;
 }
 
 .timeline-header {
@@ -18,8 +18,10 @@
 
 .timeline-header h1 {
   font-size: 3.5rem;
-  font-family: var(--font-secondary);
+  font-family: var(--font-display);
   margin-bottom: 15px;
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
   background: linear-gradient(45deg, #fff 30%, var(--primary-color) 50%, #fff 70%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -30,25 +32,33 @@
 
 .timeline-header p {
   font-size: 1.2rem;
+  font-family: var(--font-body);
   color: rgba(255, 255, 255, 0.7);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: 1.6;
 }
 
 .timeline-filters {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 30px;
+  margin: 30px 0;
+  padding: 0 20px;
 }
 
 .timeline-filters button {
-  padding: 8px 16px;
+  padding: 10px 20px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   background: rgba(0, 0, 0, 0.3);
   color: #fff;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: var(--letter-spacing-medium);
+  text-transform: uppercase;
 }
 
 .timeline-filters button:hover {
@@ -65,14 +75,18 @@
   position: relative;
   z-index: 2;
   width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
   overflow-x: hidden;
   padding: 2rem;
   background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .timeline-container {
   position: relative;
-  padding: 40px 0;
+  padding: 60px 0;
   display: flex;
   align-items: center;
 }
@@ -105,6 +119,7 @@
     transparent
   );
   transform: translateY(-50%);
+  box-shadow: 0 0 10px var(--primary-color);
 }
 
 .scroll-button {
@@ -122,6 +137,7 @@
   justify-content: center;
   z-index: 2;
   transition: all 0.3s ease;
+  margin: 0 10px;
 }
 
 .scroll-button:hover {
@@ -138,124 +154,177 @@
 }
 
 .timeline-century {
-  margin: 0 40px;
+  margin: 0 60px;
+  padding: 20px 0;
 }
 
 .century-label {
   text-align: center;
+  font-family: var(--font-display);
   font-size: 2rem;
   margin-bottom: 30px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: var(--letter-spacing-medium);
+  text-transform: uppercase;
 }
 
 .timeline-decade {
-  margin-bottom: 60px;
+  margin-bottom: 80px;
   position: relative;
 }
 
 .decade-label {
   text-align: center;
+  font-family: var(--font-display);
   font-size: 1.5rem;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   color: rgba(255, 255, 255, 0.7);
+  letter-spacing: var(--letter-spacing-medium);
+  text-transform: uppercase;
 }
 
 .decade-cases {
   display: flex;
   gap: 30px;
   position: relative;
+  padding: 0 20px;
 }
 
 .timeline-case {
   position: relative;
   cursor: pointer;
-}
-
-.case-dot {
-  width: 12px;
-  height: 12px;
-  background: var(--primary-color);
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  box-shadow: 0 0 10px var(--primary-color);
-}
-
-.case-year {
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.case-card {
-  width: 280px;
-  background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
-  border-radius: 10px;
+  transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 280px;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
 }
 
-.case-card:hover {
+.timeline-case:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(220, 0, 0, 0.2);
+  border-color: rgba(255, 0, 0, 0.5);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
 }
 
-.case-card img {
+.case-image {
   width: 100%;
-  height: 160px;
+  height: 140px;
   object-fit: cover;
 }
 
-.case-info {
-  padding: 15px;
+.case-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.case-info h4 {
-  font-size: 1.1rem;
-  margin-bottom: 8px;
+.case-year {
+  font-family: var(--font-display);
   color: #fff;
+  font-size: 1.3rem;
+  margin: 0 0 0.5rem;
+  letter-spacing: var(--letter-spacing-medium);
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
-.case-info p {
+.case-title {
+  font-family: var(--font-display);
+  color: #fff;
+  font-size: 1.3rem;
+  margin: 0 0 0.5rem;
+  letter-spacing: var(--letter-spacing-medium);
+  text-transform: uppercase;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.case-description {
+  font-family: var(--font-body);
+  color: #ccc;
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 10px;
+  line-height: 1.4;
+  margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-.case-status {
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 12px;
+.case-location {
+  font-family: var(--font-body);
+  color: #ccc;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.case-card {
+  width: 300px;
+  background: linear-gradient(to bottom, rgba(42, 42, 42, 0.9), rgba(26, 26, 26, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.case-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  border-color: var(--primary-color);
+}
+
+.case-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.case-content {
+  padding: 20px;
+}
+
+.case-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 10px;
+  letter-spacing: var(--letter-spacing-medium);
+  text-transform: uppercase;
+}
+
+.case-description {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  letter-spacing: var(--letter-spacing-normal);
+  margin-bottom: 15px;
+}
+
+.case-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.case-tag {
+  padding: 4px 10px;
+  background: rgba(220, 0, 0, 0.2);
+  border: 1px solid var(--primary-color);
+  border-radius: 15px;
+  font-family: var(--font-display);
   font-size: 0.8rem;
-  font-weight: 500;
-}
-
-.case-status.unsolved {
-  background-color: rgba(220, 0, 0, 0.2);
-  color: #ff4444;
-}
-
-.case-status.solved {
-  background-color: rgba(0, 220, 0, 0.2);
-  color: #44ff44;
-}
-
-.case-status.partially-solved {
-  background-color: rgba(220, 220, 0, 0.2);
-  color: #ffff44;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: var(--letter-spacing-medium);
+  text-transform: uppercase;
 }
 
 /* Modal styles */
@@ -429,25 +498,38 @@
   .timeline-header h1 {
     font-size: 2.5rem;
   }
-
-  .timeline-filters button {
-    font-size: 0.9rem;
-    padding: 6px 12px;
+  
+  .timeline-content {
+    padding: 1rem;
   }
-
+  
   .case-card {
-    width: 240px;
+    width: 260px;
   }
-
-  .modal-content {
-    flex-direction: column;
+  
+  .decade-cases {
+    gap: 30px;
   }
+}
 
-  .modal-image {
-    height: 200px;
+@media (max-width: 480px) {
+  .timeline-header h1 {
+    font-size: 2rem;
   }
-
-  .modal-video iframe {
-    height: 250px;
+  
+  .case-card {
+    width: 220px;
+  }
+  
+  .decade-cases {
+    gap: 20px;
+  }
+  
+  .century-label {
+    font-size: 1.5rem;
+  }
+  
+  .decade-label {
+    font-size: 1.2rem;
   }
 }
