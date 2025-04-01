@@ -1,26 +1,37 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import UFOLoader from '../components/UFOLoader';
 import '../styles/LoaderPage.css';
 
 const LoaderPage = () => {
   const navigate = useNavigate();
 
-  const handleLoadComplete = () => {
-    navigate('/home');
-  };
-
   useEffect(() => {
-    // Prevent scrolling during the loader
     document.body.style.overflow = 'hidden';
+    const timer = setTimeout(() => {
+      document.body.style.overflow = 'auto';
+      navigate('/home');
+    }, 4000);
+
     return () => {
+      clearTimeout(timer);
       document.body.style.overflow = 'auto';
     };
-  }, []);
+  }, [navigate]);
 
   return (
     <div className="loader-page">
-      <UFOLoader onLoadComplete={handleLoadComplete} />
+      <div className="tv-static"></div>
+      <div className="loader-content">
+        <div className="title-wrapper">
+          <h1 className="main-title">Unsolved</h1>
+          <h1 className="main-title outline">Mysteries</h1>
+        </div>
+        <div className="tagline">
+          <span className="typing-text">Join the investigation...</span>
+        </div>
+      </div>
+      <div className="scanline"></div>
+      <div className="noise"></div>
     </div>
   );
 };
